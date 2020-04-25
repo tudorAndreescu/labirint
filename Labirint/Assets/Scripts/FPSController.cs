@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -14,7 +15,8 @@ public class FPSController : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
-    
+    public Text winText;
+
 
     CharacterController characterController;
     TrailRenderer trailRenderer;
@@ -33,6 +35,7 @@ public class FPSController : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        winText.text = "";
     }
 
     void Update()
@@ -85,4 +88,13 @@ public class FPSController : MonoBehaviour
         trailRenderer.emitting = isTrailing;
         if (!isTrailing) trailRenderer.Clear();
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Secret"))
+        {
+            winText.text = "Congratulations!!!";
+        }
+    }
+    
 }
