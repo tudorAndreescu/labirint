@@ -4,20 +4,24 @@ using System.Collections;
 public class MazeLoader : MonoBehaviour {
 	public int mazeRows, mazeColumns;
     // public GameObject finish;
+
 	public GameObject wall;
     public GameObject mazefloor;
-	public float size = 2f;
+    public GameObject secret;
+    public float size = 2f;
+    private System.Random rnd = new System.Random();
 
-	private MazeCell[,] mazeCells;
+    private MazeCell[,] mazeCells;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		InitializeMaze ();
 
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
-	}
-	
+        AddSecret();
+    }
+
 	// Update is called once per frame
 	void Update () {
 	}
@@ -25,6 +29,7 @@ public class MazeLoader : MonoBehaviour {
 	private void InitializeMaze() {
 
 		mazeCells = new MazeCell[mazeRows,mazeColumns];
+
 
 		for (int r = 0; r < mazeRows; r++) {
 			for (int c = 0; c < mazeColumns; c++) {
@@ -56,12 +61,37 @@ public class MazeLoader : MonoBehaviour {
 				mazeCells[r,c].southWall = Instantiate (wall, new Vector3 ((r*size) + (size/2f), 0, c*size), Quaternion.identity) as GameObject;
 				mazeCells [r, c].southWall.name = "South Wall " + r + "," + c;
 				mazeCells [r, c].southWall.transform.Rotate (Vector3.up * 90f);
+
+
+
+
+
 			}
 		}
 	}
 
-    // adauga finish object pe maze cell
-    // dupa ce a construit maze-u, seteaza un maze cell random ca is finish
+
+    // Adds Secret at a random point in the Maze
+    private void AddSecret() {
+        int secretRowIndex = rnd.Next(mazeRows);
+
+        int secretComlumnIndex = 0;
+        while (secretComlumnIndex < 5)  {
+            secretComlumnIndex = rnd.Next(mazeColumns);
+        }
+
+        mazeCells = new MazeCell[mazeRows, mazeColumns];
+        for (int r = 0; r < mazeRows; r++)
+        {
+            for (int c = 0; c < mazeColumns; c++)
+            {
+                if (r == secretRowIndex && c == secretComlumnIndex)
+                {
+                    secret = Instantiate(secret, new Vector3(r * size, 0f, c * size), Quaternion.identity) as GameObject;
+                }
+            }
+        }
+    }
 
 
 }
