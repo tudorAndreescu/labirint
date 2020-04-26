@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\MazeAlgorithm.cs" />
     <Compile Include="Assets\Scripts\MazeCell.cs" />
     <Compile Include="Assets\Scripts\MazeLoader.cs" />
+    <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Rotator.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>Y:/Unity/labirint1/Labirint/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
