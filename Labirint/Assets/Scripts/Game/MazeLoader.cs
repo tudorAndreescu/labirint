@@ -8,6 +8,7 @@ public class MazeLoader : MonoBehaviour {
 	public GameObject wall;
     public GameObject mazefloor;
     public GameObject secret;
+    public GameObject battery;
     public float size = 2f;
     private System.Random rnd = new System.Random();
 
@@ -24,6 +25,7 @@ public class MazeLoader : MonoBehaviour {
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
         AddSecret();
+        AddBatteries();
     }
 
 
@@ -89,6 +91,34 @@ public class MazeLoader : MonoBehaviour {
                 if (r == secretRowIndex && c == secretComlumnIndex)
                 {
                     secret = Instantiate(secret, new Vector3(r * size, 0f, c * size), Quaternion.identity) as GameObject;
+                }
+            }
+        }
+    }
+
+    private void AddBatteries()
+    {
+        int numberOfBatteries = StaticValues.GetNumberOfBatteries();
+      
+        for (int i = 0; i < numberOfBatteries; i++)
+        {
+            int batteryRowIndex = 0;
+            int batteryComlumnIndex = rnd.Next(mazeColumns);
+            while (batteryRowIndex < 4)
+            {
+                batteryRowIndex = rnd.Next(mazeRows);
+            }
+
+            mazeCells = new MazeCell[mazeRows, mazeColumns];
+            for (int r = 0; r < mazeRows; r++)
+            {
+                for (int c = 0; c < mazeColumns; c++)
+                {
+                    if (r == batteryRowIndex && c == batteryComlumnIndex)
+                    {
+                        print($"Number: {i}");
+                        battery = Instantiate(battery, new Vector3(r * size, -1f, c * size), Quaternion.identity) as GameObject;
+                    }
                 }
             }
         }

@@ -16,6 +16,8 @@ public class FPSController : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
     public Text winText;
+    private GameObject batteryPickedUp;
+    private int batteries = 1;
 
 
     CharacterController characterController;
@@ -94,6 +96,13 @@ public class FPSController : MonoBehaviour
         if (other.gameObject.CompareTag("Secret"))
         {
             winText.text = "Congratulations!!!";
+        }
+
+        if (other.tag == "Battery")
+        {
+            batteryPickedUp = other.gameObject;
+            batteries += 1;
+            Destroy(batteryPickedUp);
         }
     }
     

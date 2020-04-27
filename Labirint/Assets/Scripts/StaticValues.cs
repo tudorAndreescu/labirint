@@ -48,4 +48,18 @@ public class StaticValues : MonoBehaviour
             default: return "Easy \n Maze size: 6x6 \n Time: 2:00";
         }
     }
+
+    public static int GetNumberOfBatteries()
+    {
+        switch (difficulty)
+        {
+            case 0: return 1;
+            case 1: return 1;
+            case 2: return 3;
+            case 3: return 5;
+            case 4: return 10;
+
+            default: return 6;
+        }
+    }
 }

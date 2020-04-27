@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.0040117246, g: 0.00021892253, b: 0.00000005266962,
+    a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -713,12 +714,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334ef5519144d0e438a932a03abdacc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mazeRows: 1
-  mazeColumns: 6
   wall: {fileID: 101274, guid: 2a571ace6952b154ca2ff06b0540f264, type: 3}
   mazefloor: {fileID: 4321393564328321409, guid: 132cad2413398ad4ab407e2d562db775,
     type: 3}
   secret: {fileID: 4766281269273750847, guid: f2f2afdecde24be45a62b88c985019d5, type: 3}
+  battery: {fileID: 1549406235960464907, guid: d823d2c4894d5b940b3d5382c3274de9, type: 3}
   size: 6
 --- !u!4 &1062459227
 Transform:
@@ -1458,13 +1458,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810352119}
-  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
+  m_LocalRotation: {x: -0.55403227, y: -0.21201213, z: -0.14845248, w: 0.79124016}
   m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -70, y: -30.000002, z: 0}
 --- !u!1 &1973230732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,10 +1553,98 @@ Transform:
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 1.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2071276098}
   m_Father: {fileID: 2100923243}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!1001 &2071276097
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1973230737}
+    m_Modifications:
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.53669405
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.91570324
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6482576
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.28481948
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.17135666
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6850379
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 52.237003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45.255
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -80.526
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886926716517073141, guid: 9840d907398f2ea459b4c90353090141,
+        type: 3}
+      propertyPath: m_Name
+      value: Flashlight
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9840d907398f2ea459b4c90353090141, type: 3}
+--- !u!4 &2071276098 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8886926716517073137, guid: 9840d907398f2ea459b4c90353090141,
+    type: 3}
+  m_PrefabInstance: {fileID: 2071276097}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2071276099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8886926717285609458, guid: 9840d907398f2ea459b4c90353090141,
+    type: 3}
+  m_PrefabInstance: {fileID: 2071276097}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2071276100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8886926716517073141, guid: 9840d907398f2ea459b4c90353090141,
+    type: 3}
+  m_PrefabInstance: {fileID: 2071276097}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2100923240
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1658,7 @@ GameObject:
   - component: {fileID: 2100923241}
   - component: {fileID: 2100923244}
   - component: {fileID: 2100923245}
+  - component: {fileID: 2100923246}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Untagged
@@ -1744,3 +1833,18 @@ CapsuleCollider:
   m_Height: 0.1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2100923246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100923240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1469d77b8cb9df47acf4400a60ef3b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashlight: {fileID: 2071276100}
+  spotlight: {fileID: 2071276099}
+  maxEnergy: 0
