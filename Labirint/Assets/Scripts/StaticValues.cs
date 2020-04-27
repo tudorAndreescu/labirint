@@ -6,6 +6,8 @@ public class StaticValues : MonoBehaviour
 {
 
     public static int difficulty = 0;
+    public static bool gameWon = false;
+
 
     public static int GetMazeRows()
     {
@@ -21,6 +23,7 @@ public class StaticValues : MonoBehaviour
         }
     }
 
+
     public static int GetMazeColumns()
     {
         switch (difficulty)
@@ -35,12 +38,13 @@ public class StaticValues : MonoBehaviour
         }
     }
 
+
     public static string GetDifficultyDescription()
     {
         switch (difficulty)
         {
-            case 0: return "Begginer\nMaze size: 5x6\nTime: 1:30";
-            case 1: return "Easy\nMaze size: 7x9\n Time: 2:00";
+            case 0: return "Begginer\nMaze size: 5x6\nTime: 1:00";
+            case 1: return "Easy\nMaze size: 7x9\n Time: 1:30";
             case 2: return "Medium\nMaze size: 10x12\nTime: 3:00";
             case 3: return "Hard\nMaze size: 14x18\nTime: 5:00";
             case 4: return "Impossible\nMaze size: 20x25\nTime: 10:00";
@@ -49,17 +53,33 @@ public class StaticValues : MonoBehaviour
         }
     }
 
+
     public static int GetNumberOfBatteries()
     {
         switch (difficulty)
         {
-            case 0: return 1;
+            case 0: return 0;
             case 1: return 1;
             case 2: return 3;
             case 3: return 5;
             case 4: return 10;
 
-            default: return 6;
+            default: return 0;
+        }
+    }
+
+
+    public static float GetTimer()
+    {
+        switch (difficulty)
+        {
+            case 0: return 60f;
+            case 1: return 90f;
+            case 2: return 180f;
+            case 3: return 300f;
+            case 4: return 600f;
+
+            default: return 90f;
         }
     }
 }

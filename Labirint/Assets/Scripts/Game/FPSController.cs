@@ -16,9 +16,7 @@ public class FPSController : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
-    public Text winText;
     private GameObject batteryPickedUp;
-    private int batteries = 1;
 
 
     CharacterController characterController;
@@ -38,7 +36,6 @@ public class FPSController : MonoBehaviour
         // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        winText.text = "";
     }
 
     void Update()
@@ -98,13 +95,14 @@ public class FPSController : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
+            StaticValues.gameWon = true;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         if (other.tag == "Battery")
         {
             batteryPickedUp = other.gameObject;
-            batteries += 1;
+            Flashlight.currentEnergy += 60;
             Destroy(batteryPickedUp);
         }
     }

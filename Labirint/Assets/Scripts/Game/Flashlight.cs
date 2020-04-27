@@ -8,26 +8,21 @@ public class Flashlight : MonoBehaviour
     public GameObject flashlight;
     public GameObject spotlight;
     public float maxEnergy;
-    private float currentEnergy;
+    public static float currentEnergy;
 
-    private int batteries = 1;
     private GameObject batteryPickedUp;
     private float usedEnergy;
 
 
    public void Start()
     {
-        maxEnergy = 60 * batteries; 
-        currentEnergy = maxEnergy;
+        maxEnergy = 60 * StaticValues.GetNumberOfBatteries(); 
+        currentEnergy = 60;
     }
 
  
-    public void FixedUpdate()
+    public void Update()
     {
-        maxEnergy = 60 * batteries;
-        currentEnergy = maxEnergy;
-
-
         //equip
         if (Input.GetKeyDown(KeyCode.F))
             flashlightEnabled =! flashlightEnabled;
@@ -39,19 +34,11 @@ public class Flashlight : MonoBehaviour
             if (currentEnergy <= 0)
             {
                 spotlight.SetActive(false);
-                batteries = 0;
             }
             if (currentEnergy > 0)
             {
                 spotlight.SetActive(true);
                 currentEnergy -= 1f * Time.deltaTime;
-                usedEnergy += 1f * Time.deltaTime;
-            }
-
-            if(usedEnergy >= 60)
-            {
-                batteries -= 1;
-                usedEnergy = 0;
             }
 
         }

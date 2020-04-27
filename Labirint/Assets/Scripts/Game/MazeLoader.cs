@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MazeLoader : MonoBehaviour {
 
@@ -9,7 +11,11 @@ public class MazeLoader : MonoBehaviour {
     public GameObject mazefloor;
     public GameObject secret;
     public GameObject battery;
+    public TextMeshProUGUI timerText;
+
     public float size = 2f;
+    private float timer;
+    private bool timerWasSet = false;
     private System.Random rnd = new System.Random();
 
     private MazeCell[,] mazeCells;
@@ -26,6 +32,7 @@ public class MazeLoader : MonoBehaviour {
 		ma.CreateMaze ();
         AddSecret();
         AddBatteries();
+        StartTimer();
     }
 
 
@@ -116,7 +123,6 @@ public class MazeLoader : MonoBehaviour {
                 {
                     if (r == batteryRowIndex && c == batteryComlumnIndex)
                     {
-                        print($"Number: {i}");
                         battery = Instantiate(battery, new Vector3(r * size, -1f, c * size), Quaternion.identity) as GameObject;
                     }
                 }
@@ -125,10 +131,33 @@ public class MazeLoader : MonoBehaviour {
     }
 
 
-    private void GetMazeRowsAndColumnsBasedOnDifficulty()
+    private void StartTimer()
     {
-        int difficulty = StaticValues.difficulty;
-
+        timer = StaticValues.GetTimer();
+        timerWasSet = true;
     }
+
+    private void Update()
+    {
+        if (!timerWasSet) return;
+        if (timer >= 0.0f)
+        {
+            timer -= Time.deltaTime;
+            int minutes = (int)(timer / 60);
+            int seconds = (int)((timer - (minutes * 60)) % 60);
+            timerText.SetText($"TIME LEFT\n{minutes}:{seconds}");
+            // send the time value to a Text object as an int
+        }
+
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            StaticValues.gameWon = false;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+    }
+
+
 
 }
