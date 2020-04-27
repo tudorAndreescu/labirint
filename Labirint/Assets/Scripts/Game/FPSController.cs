@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(TrailRenderer))]
@@ -95,7 +96,9 @@ public class FPSController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Secret"))
         {
-            winText.text = "Congratulations!!!";
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         if (other.tag == "Battery")
