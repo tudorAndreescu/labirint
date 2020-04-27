@@ -39,12 +39,8 @@ public class PauseMenu : MonoBehaviour {
 
     public void LoadMenu()
     {
-        Debug.Log("Loading menu...");
-
-        ///Instead of printing, load menu scene here once it is up and running
-        ///use a variable instead of hard coding
-        //SceneManager.LoadScene("Menu");
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
 
