@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class MazeLoader : MonoBehaviour {
-	public int mazeRows, mazeColumns;
-    // public GameObject finish;
+
+	private int mazeRows, mazeColumns;
 
 	public GameObject wall;
     public GameObject mazefloor;
@@ -13,20 +13,22 @@ public class MazeLoader : MonoBehaviour {
 
     private MazeCell[,] mazeCells;
 
+
     // Use this for initialization
     void Start () {
-		InitializeMaze ();
+        // set maze rows and columns based on selected difficulty
+        mazeRows = StaticValues.GetMazeRows();
+        mazeColumns = StaticValues.GetMazeColumns();
 
+        InitializeMaze ();
 		MazeAlgorithm ma = new HuntAndKillMazeAlgorithm (mazeCells);
 		ma.CreateMaze ();
         AddSecret();
     }
 
-	// Update is called once per frame
-	void Update () {
-	}
 
 	private void InitializeMaze() {
+
 
 		mazeCells = new MazeCell[mazeRows,mazeColumns];
 
@@ -73,11 +75,10 @@ public class MazeLoader : MonoBehaviour {
 
     // Adds Secret at a random point in the Maze
     private void AddSecret() {
-        int secretRowIndex = rnd.Next(mazeRows);
-
-        int secretComlumnIndex = 0;
-        while (secretComlumnIndex < 5)  {
-            secretComlumnIndex = rnd.Next(mazeColumns);
+        int secretRowIndex = 0;
+        int secretComlumnIndex = rnd.Next(mazeColumns);
+        while (secretRowIndex < 4)  {
+            secretRowIndex = rnd.Next(mazeRows);
         }
 
         mazeCells = new MazeCell[mazeRows, mazeColumns];
@@ -93,5 +94,11 @@ public class MazeLoader : MonoBehaviour {
         }
     }
 
+
+    private void GetMazeRowsAndColumnsBasedOnDifficulty()
+    {
+        int difficulty = StaticValues.difficulty;
+
+    }
 
 }
