@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/MainMenu.unity
     guid: 4040906e837fb7d45ad6685a7020da61
   - enabled: 1
-    path: Assets/Sandbox.unity
+    path: Assets/Game.unity
     guid: 03ace6102d521654d82119a05e91f81e
   - enabled: 1
     path: Assets/GameOver.unity
