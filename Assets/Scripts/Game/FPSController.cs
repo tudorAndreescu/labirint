@@ -17,7 +17,7 @@ public class FPSController : MonoBehaviour
     public float lookSpeed = 2.0f;
     public float lookXLimit = 45.0f;
     private GameObject batteryPickedUp;
-
+    private bool isPlayingMovementSound = false;
 
     CharacterController characterController;
     TrailRenderer trailRenderer;
@@ -27,6 +27,7 @@ public class FPSController : MonoBehaviour
     [HideInInspector]
     public bool canMove = true;
     public bool isTrailing = false;
+
 
     void Start()
     {
@@ -55,12 +56,18 @@ public class FPSController : MonoBehaviour
         if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
         {
             moveDirection.y = jumpSpeed;
+            AudioManager.instance.StopMovementLoop();
+            isPlayingMovementSound = false;
         }
         else
         {
             moveDirection.y = movementDirectionY;
         }
 
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.LeftShift)) {
+            AudioManager.instance.StopMovementLoop();
+            isPlayingMovementSound = false;
+        }
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
         // as an acceleration (ms^-2)
@@ -87,6 +94,23 @@ public class FPSController : MonoBehaviour
 
         trailRenderer.emitting = isTrailing;
         if (!isTrailing) trailRenderer.Clear();
+
+        if (characterController.velocity.magnitude > 2f && characterController.isGrounded) {
+            if (!isPlayingMovementSound) 
+            {
+                isPlayingMovementSound = true;
+
+                if (isRunning) AudioManager.instance.PlayMovementLoop("Run");
+                else AudioManager.instance.PlayMovementLoop("Jog");
+            }
+        }
+        else
+        {
+            if (isPlayingMovementSound) {
+                isPlayingMovementSound = false;
+                AudioManager.instance.StopMovementLoop();
+            }
+        }
     }
 
     void OnTriggerEnter(Collider other)
