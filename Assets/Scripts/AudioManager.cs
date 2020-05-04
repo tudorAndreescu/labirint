@@ -80,6 +80,12 @@ public class AudioManager : MonoBehaviour
         return s.source.isPlaying;
     }
 
+    public void PlayButtonToggle() {
+        Sound s = Array.Find(sounds, sound => sound.name == "ButtonPress");
+        if (s == null) return; 
+        s.source.PlayOneShot(s.clip, s.volume);
+    }
+
     private void Update() {
         if (playMovementLoop)
         {
@@ -89,9 +95,7 @@ public class AudioManager : MonoBehaviour
 
             movementTimer -= 1f * Time.deltaTime;
             if (movementTimer <= 0f) movementTimer = movementSound.source.clip.length;
-        }
-
-        
+        }        
     }
 
 }

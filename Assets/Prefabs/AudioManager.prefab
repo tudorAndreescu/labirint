@@ -68,3 +68,27 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: FlashlightToggle
+    clip: {fileID: 8300000, guid: 1a3276f99f8a7e10d9064c66528f8a6a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: PickUpBattery
+    clip: {fileID: 8300000, guid: a7db4700ded78ec35a639697d3081e89, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: TrailToggle
+    clip: {fileID: 8300000, guid: 6316bdd357473a24a9cbd4276ca3936e, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ButtonPress
+    clip: {fileID: 8300000, guid: 85c076032361fa6e49c262658d8fa679, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}

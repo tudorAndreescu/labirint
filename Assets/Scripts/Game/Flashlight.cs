@@ -36,8 +36,10 @@ public class Flashlight : MonoBehaviour
         UpdateBatteries();
 
         //equip
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)) {
+            AudioManager.instance.PlayOneShot("FlashlightToggle");
             flashlightEnabled =! flashlightEnabled;
+        }
 
         if (flashlightEnabled)
         {

@@ -90,7 +90,11 @@ public class FPSController : MonoBehaviour
 
 
         // Trailing
-        if (Input.GetMouseButtonDown(0)) isTrailing = !isTrailing;
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            isTrailing = !isTrailing;
+            AudioManager.instance.PlayOneShot("TrailToggle");
+        } 
 
         trailRenderer.emitting = isTrailing;
         if (!isTrailing) trailRenderer.Clear();
@@ -125,6 +129,7 @@ public class FPSController : MonoBehaviour
 
         if (other.tag == "Battery")
         {
+            AudioManager.instance.PlayOneShot("PickUpBattery");
             batteryPickedUp = other.gameObject;
             Flashlight.currentEnergy += 60;
             Destroy(batteryPickedUp);
